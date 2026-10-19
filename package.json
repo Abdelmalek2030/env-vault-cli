@@ -1,0 +1,22 @@
+{
+  "name": "env-vault-cli",
+  "version": "1.0.0",
+  "description": "Zero-dependency secure CLI utility for encrypting, decrypting, and safely syncing local .env environment files across engineering teams.",
+  "main": "index.js",
+  "bin": {
+    "env-vault": "./index.js"
+  },
+  "scripts": {
+    "test": "node index.js --help"
+  },
+  "keywords": [
+    "cli",
+    "encryption",
+    "environment-variables",
+    "security",
+    "nodejs"
+  ],
+  "author": "Abdelmalek2030",
+  "license": "MIT",
+  "dependencies": {}
+}
