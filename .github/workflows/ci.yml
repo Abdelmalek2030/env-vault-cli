@@ -1,0 +1,49 @@
+name: CI Matrix & Quality Gate
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+
+jobs:
+  quality-gate:
+    name: Verify (${{ matrix.os }} / Node ${{ matrix.node }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, macos-latest]
+        node: ['20', '22']
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Setup Node.js ${{ matrix.node }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+
+      - name: Verify Zero External Dependencies Invariant
+        run: |
+          node -e '
+            const pkg = require("./package.json");
+            if (pkg.dependencies && Object.keys(pkg.dependencies).length > 0) {
+              throw new Error("Zero-dependency invariant violated!");
+            }
+          '
+
+      - name: Static Syntax Verification
+        run: npm run lint
+
+      - name: Execute Hermetic Unit & E2E Test Suite
+        run: npm test
+
+      - name: Execute Cryptographic Benchmark Check
+        run: npm run bench
