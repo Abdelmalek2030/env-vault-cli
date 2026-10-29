@@ -1,0 +1,39 @@
+.TH ENV-VAULT 1 "October 2026" "env-vault-cli 1.0.0" "User Commands"
+.SH NAME
+env-vault \- zero-dependency AES-256-GCM environment file encryption utility
+.SH SYNOPSIS
+.B env-vault
+.I command
+[\fIinput\fR] [\fIoutput\fR] [\fB\-k\fR \fIpassphrase\fR] [\fB\-\-dry\-run\fR]
+.SH DESCRIPTION
+.B env-vault
+encrypts, decrypts, rotates, and inspects local \fI.env\fR files using authenticated \fBAES-256-GCM\fR cryptography and memory-hard \fBscrypt\fR key derivation. Built strictly on native Node.js modules with zero external dependencies.
+.SH COMMANDS
+.TP
+.B encrypt
+Encrypts a plaintext \fI.env\fR file into an authenticated \fI.env.vault\fR envelope.
+.TP
+.B decrypt
+Verifies the authentication tag and decrypts \fI.env.vault\fR into a \fI0600\fR permissioned \fI.env\fR file.
+.TP
+.B rotate
+Re-encrypts a vault file using a new passphrase and freshly generated salt/IV.
+.TP
+.B inspect
+Prints non-sensitive envelope header metadata in JSON format.
+.SH ENVIRONMENT
+.TP
+.B ENV_VAULT_KEY
+Default passphrase used when \fB\-k\fR or \fB\-\-key\fR is omitted.
+.SH EXIT STATUS
+.TP
+.B 0
+Successful execution.
+.TP
+.B 1
+CLI usage or argument error.
+.TP
+.B 2
+Cryptographic authentication tag verification failure.
+.SH AUTHOR
+Abdelmalek <Abdelmalek2030github@hotmail.com>
