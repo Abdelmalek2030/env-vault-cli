@@ -1,22 +1,42 @@
 {
   "name": "env-vault-cli",
   "version": "1.0.0",
-  "description": "Zero-dependency secure CLI utility for encrypting, decrypting, and safely syncing local .env environment files across engineering teams.",
+  "description": "Zero-dependency secure CLI utility built with native Node.js crypto modules for enterprise-grade AES-256-GCM environment file encryption and synchronization.",
   "main": "index.js",
   "bin": {
     "env-vault": "./index.js"
   },
+  "files": [
+    "index.js",
+    "src/",
+    "man/",
+    "completions/",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
-    "test": "node index.js --help"
+    "lint": "node --check index.js && node --check src/constants.js && node --check src/crypto.js && node --check src/vault.js",
+    "test": "node --test tests/crypto.test.js tests/kdf.test.js tests/parser.test.js tests/fs-atomic.test.js tests/cli.test.js",
+    "fuzz": "node tests/fuzz.js",
+    "bench": "node scripts/benchmark.js"
   },
   "keywords": [
-    "cli",
+    "dotenv",
+    "env-vault",
     "encryption",
-    "environment-variables",
+    "aes-256-gcm",
     "security",
-    "nodejs"
+    "zero-dependency",
+    "cli",
+    "devops"
   ],
-  "author": "Abdelmalek2030",
+  "author": "Abdelmalek <Abdelmalek2030github@hotmail.com>",
   "license": "MIT",
-  "dependencies": {}
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abdelmalek2030/env-vault-cli.git"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
 }
