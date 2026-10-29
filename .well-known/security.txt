@@ -1,0 +1,6 @@
+Contact: mailto:Abdelmalek2030github@hotmail.com
+Expires: 2027-12-31T23:59:59.000Z
+Encryption: https://github.com/Abdelmalek2030.gpg
+Preferred-Languages: en
+Canonical: https://raw.githubusercontent.com/Abdelmalek2030/env-vault-cli/main/.well-known/security.txt
+Policy: https://github.com/Abdelmalek2030/env-vault-cli/blob/main/SECURITY.md
