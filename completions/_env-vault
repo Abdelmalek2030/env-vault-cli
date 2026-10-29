@@ -1,0 +1,29 @@
+#compdef env-vault
+
+_env_vault() {
+  local -a commands
+  commands=(
+    'encrypt:Encrypt a plaintext .env file into .env.vault'
+    'decrypt:Decrypt an authenticated .env.vault file into .env'
+    'rotate:Rotate passphrase and regenerate cryptographic salt/nonce'
+    'inspect:Inspect vault envelope metadata'
+  )
+
+  _arguments -C \
+    '1: :->cmds' \
+    '(-k --key)'{-k,--key}'[Passphrase for encryption/decryption]:passphrase:' \
+    '--old-key[Current passphrase for key rotation]:oldkey:' \
+    '--new-key[New passphrase for key rotation]:newkey:' \
+    '--dry-run[Execute in memory without writing to disk]' \
+    '(-h --help)'{-h,--help}'[Show help message]' \
+    '(-v --version)'{-v,--version}'[Show version]' \
+    '*:file:_files'
+
+  case "$state" in
+    cmds)
+      _describe -t commands 'env-vault command' commands
+      ;;
+  esac
+}
+
+_env_vault "$@"
