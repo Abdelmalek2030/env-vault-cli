@@ -1,0 +1,19 @@
+name: Feature Request
+description: Propose an enhancement adhering to zero-dependency principles
+title: "[Feat]: "
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem Statement & Use Case
+      description: What operational or security workflow does this feature address?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed Zero-Dependency Implementation
+      description: How can this be implemented strictly using built-in Node.js native modules?
+    validations:
+      required: true
