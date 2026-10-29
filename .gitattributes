@@ -1,0 +1,18 @@
+# Enforce Unix LF line endings across all files for deterministic cryptographic hashing
+* text=auto eol=lf
+
+# Explicitly mark JavaScript files as primary language
+*.js linguist-detectable=true
+*.mjs linguist-detectable=true
+*.cjs linguist-detectable=true
+
+# Exclude auxiliary scripts, Makefiles, man pages, and manifests from Linguist stats
+Makefile linguist-vendored=true
+*.sh linguist-vendored=true
+*.yml linguist-vendored=true
+*.yaml linguist-vendored=true
+*.json linguist-vendored=true
+man/** linguist-documentation=true
+docs/** linguist-documentation=true
+completions/** linguist-vendored=true
+*.md linguist-documentation=true
