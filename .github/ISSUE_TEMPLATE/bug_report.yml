@@ -1,0 +1,31 @@
+name: Bug Report
+description: Report a cryptographic, CLI parsing, or cross-platform issue
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting an issue. Please never paste real `.env` secrets or production passphrases in this form.
+  - type: input
+    id: runtime
+    attributes:
+      label: Node.js & OS Environment
+      description: Output of `node -v && uname -a`
+      placeholder: "v20.18.0 / Linux 6.8.0-generic x86_64"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal Reproduction Steps
+      description: Exact CLI flags and sanitized dummy inputs used to trigger the issue
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected vs Actual Behavior
+      description: Describe the expected exit code/output versus actual behavior
+    validations:
+      required: true
