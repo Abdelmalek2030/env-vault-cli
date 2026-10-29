@@ -1,0 +1,11 @@
+{
+  "default": true,
+  "MD013": false,
+  "MD024": {
+    "siblings_only": true
+  },
+  "MD033": {
+    "allowed_elements": ["div", "p", "img", "a", "br", "kbd", "sub", "sup"]
+  },
+  "MD041": false
+}
